@@ -1,22 +1,10 @@
 <template>
-  <SayName :msg="msg">
-    <template v-slot:out >
-      <p>dişardan geldi2</p>
-    </template>
-  </SayName>
+  <RouterLink to="/">Home</RouterLink>
+  <RouterLink to="/counter">Conter</RouterLink>
+  <router-view></router-view>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue';
-import SayName from '@/components/SayName.vue'
-let msg=ref("mesajs");
 
-setTimeout(()=>{
-  msg.value="mesaj değişti";
-},2500)
-
-
-</script>
 
 <style>
 #app {
