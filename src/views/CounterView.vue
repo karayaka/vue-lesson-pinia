@@ -1,13 +1,22 @@
 <template>
-    <p>Counter</p>
-    <p>{{ store.count}}</p>
-    <p>{{ store.double}}</p>
-    <button @click="store.discrement()">azalt</button>
+    <div>
+        <p v-if="store.userListLoading">loading...</p>
+        <ul v-else>
+            <li v-for="user in store.users" :key="user.id" >
+                {{ user.name }}
+            </li>
+        </ul>
+    </div>
+
 </template>
 <script lang="ts" setup>
 import {counterStore} from'@/store/couter'
+import { onMounted } from 'vue';
 
 var store=counterStore();
 
+onMounted(()=>{
+    store.getUsers();
+})
 
 </script>
