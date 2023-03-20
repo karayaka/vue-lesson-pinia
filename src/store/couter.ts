@@ -1,6 +1,6 @@
 import {defineStore} from'pinia'
 import user_repository from '@/repositorys/user_repository';
-import { IUser } from '@/models/user_models/user_model';
+import IUser  from '@/models/user_models/user_model';
 
 export const  counterStore=defineStore('counter',{
     state:() =>{
@@ -22,13 +22,11 @@ export const  counterStore=defineStore('counter',{
         discrement():void{
             this.count--;
         },
-        getUsers(){
+        async getUsers(){
             this.userListLoading=true;
-            user_repository.getUsers().then((value)=>{
-                this.users=value;
-                this.userListLoading=false;
-            })
+            this.users= await user_repository.getUsers()
             console.log("user cal");
+            this.userListLoading=false;
         }
     }
 })
