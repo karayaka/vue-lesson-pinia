@@ -11,8 +11,6 @@
 <script setup lang="ts">
 import store from '@/store/message_store'
 
-
-
 </script>
 
 
