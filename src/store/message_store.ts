@@ -1,16 +1,19 @@
-import {defineStore} from 'pinia'
+import {reactive } from 'vue'
 
-export const messageStore=defineStore('messag',{
-    state:() =>{
-        return {
-            message:'',
-        }
-    },
-    actions:{
-        showMessage(message:string){
-            this.message=message;
-            console.log('------message____')
-            console.log(message);
+const store=({
+    state:reactive({
+        message:'' as string,
+        showMessage:false as boolean,
+    }),
+    mutations:{
+        showMessage(messag:string){
+            store.state.message=messag;
+            store.state.showMessage=true;
+        },
+        hideMessage(){
+            store.state.showMessage=false;
         }
     }
 })
+
+export default store;
